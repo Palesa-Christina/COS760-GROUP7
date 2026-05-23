@@ -98,7 +98,7 @@ AfriSenti is used in this project in **two specific ways**:
 2. **As reference languages for cross-lingual performance comparison.**
    Hausa (`hau`) and Swahili (`swa`) are loaded. Both are African languages
    with reasonably large AfriSenti splits compared to Sesotho and Setswana. Running the same models on these languages
-   gives us a benchmark to identify and observe how well models perform on better-resourced languages
+   gives us a benchmark to identify and observe how well models perform on better-resourced
    African languages versus low-resource targets, Sesotho and Setswana.
 
 **Note: AfriSenti is NOT used for training Sesotho or Setswana models directly in the implementation.**
@@ -113,7 +113,7 @@ It is loaded here as a **separate, independent evaluation benchmark**.
 
 **Why kept separate from the Group 7 corpus:**
 - The Group 7 distantly-supervised corpus (in Stage 1) was constructed independently and is the training source.
-- Merging both datasets would change the structure of the reference benchmark and make the evaluation ambiguous.
+- Merging both datasets would change the structure of the reference benchmark and make evaluation ambiguous.
 - By keeping them separate, an evaluation of how well models trained on the Group 7 corpus transfer to
   independently annotated Setswana data is conducted, making the Setswana corpus contribution a meaningful and honest test of generalisation.
 
@@ -121,7 +121,7 @@ It is loaded here as a **separate, independent evaluation benchmark**.
 
 ## Stage 3 - Preprocessing and Train/Val/Test Splits
 
-All three datasets (Sesotho, Group 7 Setswana, and closed Setswana) pass through the same
+All three datasets (Sesotho, Group 7 Setswana, closed Setswana) pass through the same
 cleaning function to ensure consistency across the entire pipeline.
 The Group 7 corpus was already cleaned in Stage 1, but the cleaning function is reapplied in this stage
 to ensure and guarantee uniform treatment across all the datasets.
@@ -145,17 +145,17 @@ Character n-gram TF-IDF (1–3 grams, 50,000 features) with logistic regression.
 
 ### Connection to AfriSenti and the Transfer Learning Approach
 
-The four models fine-tuned during this stage were pre-trained on large multilingual corpora, which include African languages, and for AfriBERTa and AfroXLMR, AfriSenti data was part of the pre-training. The main transfer learning experiment suggested in this project is to fine-tune these models on the Sesotho News Headlines dataset and the Group 7 Setswana corpus.
+The four models fine-tuned during this stage were pre-trained on large multilingual corpora which include African languages and for AfriBERTa and AfroXLMR, AfriSenti data was part of the pre-training. The main transfer learning experiment suggested in this project is to fine-tune these models on the Sesotho News Headlines dataset and the Group 7 Setswana corpus.
 
-The hypothesis for this experiment is that models that have been exposed to African language text before this experiment will transfer more effectively to the low-resource languages of Sesotho and Setswana than a general multilingual model like mBERT, which has no Africa-focused pretraining.
+The hypothesis for this experiment is that models that have been exposed to African language text before this experiment will transfer more effectively to the low-resource languages of Sesotho and Setswana, than a general multilingual model like mBERT, which has no Africa-focused pretraining.
 
-For initial experiments with the standard learning rate of 2e-5, AfroXLMR collapsed, and the training loss went to zero, and the validation loss went to NaN. That was a very clear sign of gradient instability. Instead of completely removing AfroXLMR from the comparison, the issue was addressed by adding a per-model learning rate setting, decreasing the learning rate for AfroXLMR to **5e-6**, which is a quarter of the learning rate used for the other models. This adjustment made the training more stable and allowed us to successfully include AfroXLMR for all of the experiments. We find the sensitivity of continued-pretraining models on fine-tuning hyperparameters to be a finding in itself, and note it as something to consider while working with similar models in similar low-resource settings.
+For initial experiments with the standard learning rate of 2e-5, AfroXLMR collapsed and the training loss went to zero and validation loss went to NaN. That was a very clear sign of gradient instability. Instead of completely removing AfroXLMR from the comparison, the issue was addressed by adding a per-model learning rate setting, decreasing the learning rate for AfroXLMR to **5e-6**, which is a quarter of the learning rate used for the other models. This adjustment made the training more stable and allowed us to successfully include AfroXLMR for all of the experiments. We find the sensitivity of continued-pretraining models on fine-tuning hyperparameters to be a finding in itself, and note it as something to consider while working with similar models in similar low-resource settings.
 
 ### Models
 
 | Model | HuggingFace ID | Learning Rate |
 |-------|---------------|---------------|
-| TF-IDF + Logistic Regression | — (sklearn) | — |
+| TF-IDF and Logistic Regression | - (sklearn) | - |
 | mBERT | `bert-base-multilingual-cased` | 2e-5 |
 | AfriBERTa | `castorini/afriberta_large` | 2e-5 |
 | XLM-RoBERTa | `xlm-roberta-base` | 2e-5 |
@@ -193,10 +193,10 @@ Results are reported across all models, languages, and conditions using macro F1
 | Sesotho | AfriBERTa | 0.655 | 0.618 |
 | Setswana G7 | mBERT | 0.978 | 0.967 |
 | Setswana Closed | AfriBERTa | 0.553 | 0.530 |
-| Hausa (reference) | AfriBERTa | 0.787 | — |
-| Swahili (reference) | AfriBERTa | 0.562 | — |
+| Hausa (reference) | AfriBERTa | 0.787 | - |
+| Swahili (reference) | AfriBERTa | 0.562 | - |
 
-> **Note:** Setswana G7 scores are inflated by distant supervision label artefacts. The Setswana Closed dataset provides a clearer and more realistic performance measure as compared to the custom Group 7 corpus.
+> **Note:** Setswana G7 scores are inflated by distant supervision label artefacts. The Setswana Closed dataset provides more clear and realistic performance measure as compared to the custom Group 7 corpus.
 
 ### Outputs Generated
 
@@ -225,7 +225,7 @@ SHAP TextExplainer applied to the best-performing checkpoint (AfriBERTa on Sesot
 
 ## Stage 9 - Results Summary and Export
 
-Final results table printed and saved to `results_summary.csv`. All output files were downloaded to the local machine.
+Final results table printed and saved to `results_summary.csv`. All output files were downloaded to local machine.
 
 ---
 

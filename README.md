@@ -246,12 +246,16 @@ pip install transformers datasets evaluate scikit-learn seaborn matplotlib shap 
 ---
 
 ## References
-
-- Mokhosi, R., Shivachi, C., & Sethobane, M. (2024). A Sesotho news headlines dataset for sentiment analysis. *Data in Brief*, 54.
-- Muhammad, S. H., et al. (2023). AfriSenti: A Twitter Sentiment Analysis Benchmark for African Languages. *arXiv:2302.08956*.
-- Ogueji, K., Zhu, Y., & Lin, J. (2021). Small Data? No Problem! *Proceedings of the 1st Workshop on Multilingual Representation Learning*.
-- Alabi, J. O., et al. (2022). AfroXLMR: A Self-Supervised Learning Framework for African Languages. *arXiv:2211.08053*.
-- Conneau, A., et al. (2020). Unsupervised Cross-lingual Representation Learning at Scale. *ACL 2020*.
-- Devlin, J., et al. (2019). BERT: Pre-training of Deep Bidirectional Transformers. *NAACL-HLT 2019*.
-- Costa-jussa, M. R., et al. (2022). No Language Left Behind. *arXiv:2207.04672*.
-- Marivate, V., et al. (2020). Investigating an Approach for Low-Resource Language Dataset Creation. *COLING 2020*.
+- Alabi, J. O., et al. (2022). AfroXLMR: A Self-Supervised Learning Model for African Languages. *arXiv:2211.03211*.
+- Conneau, A., et al. (2020). Unsupervised Cross-Lingual Representation Learning at Scale. *Proceedings of ACL 2020*, pp. 8440–8451.
+- Costa-Jussà, M. R., et al. (2022). No Language Left Behind: Scaling Human-Centered Machine Translation. *arXiv:2207.04672*.
+- Devlin, J., et al. (2019). BERT: Pre-Training of Deep Bidirectional Transformers for Language Understanding. *Proceedings of NAACL-HLT 2019*, pp. 4171–4186.
+- Howard, J., & Ruder, S. (2018). Universal Language Model Fine-Tuning for Text Classification. *Proceedings of ACL 2018*, pp. 328–339.
+- Lundberg, S. M., & Lee, S. (2017). A Unified Approach to Interpreting Model Predictions. *Advances in Neural Information Processing Systems (NeurIPS)*, vol. 30.
+- Mabokela, K. R., et al. (2025). Advancing Sentiment Analysis for Low-Resourced African Languages Using Pre-Trained Language Models. *PLOS ONE*, 20(6):e0325102.
+- Marivate, V., et al. (2020). Investigating an Approach for Low-Resource Language Dataset Creation: Setswana NER. *Proceedings of COLING 2020*, pp. 15–21.
+- Mokhosi, R., et al. (2024). A Sesotho News Headlines Dataset for Sentiment Analysis. *Data in Brief*, 54:110371.
+- Muennighoff, N., et al. (2022). MTEB: Massive Text Embedding Benchmark. *arXiv:2210.07316*.
+- Muhammad, S. H., et al. (2023). SemEval-2023 Task 12: Sentiment Analysis for African Languages (AfriSenti-SemEval). *Proceedings of SemEval-2023*.
+- Ogueji, K., et al. (2021). Small Data? No Problem! Exploring the Viability of Pretrained Multilingual Language Models for Low-Resourced Languages. *Proceedings of the 1st Workshop on Multilingual Representation Learning*, pp. 116–126.
+- Wang, Z., et al. (2020). Extending Multilingual BERT to Low-Resource Languages. *Findings of EMNLP 2020*, pp. 2649–2656.

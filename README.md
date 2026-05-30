@@ -242,6 +242,50 @@ Install via:
 ```bash
 pip install transformers datasets evaluate scikit-learn seaborn matplotlib shap sentencepiece sacremoses emoji accelerate groq
 ```
+---
+
+## Setup Instructions
+
+1. **Google Account and Drive** - A Google account with at least 30GB of free Drive storage is required for the checkpoint persistence across sessions. This is to handle the loss of runtime progress that may be faced when the runtime fails, when the experiments are conducted on a free version of Google Colab. The solution is to mount a Google Drive when prompted at the start of the notebook.
+
+2. **Google Colab** - Open `notebooks/cos760_group7.ipynb` in Google Colab. Under `Runtime > Change runtime type`, select `T4 GPU` before running the notebook. The GPU allows for a faster and smoother execution of the experiment as compared to running it on CPU.
+
+3. **Install dependencies** - Run the installation cell at the top of the notebook (Stage 0). All required packages are installed automatically via pip.
+
+4. **API Keys** - The notebook requires a Groq API key for Stage 6, where LLM paraphrasing is done. Obtain a free key at [console.groq.com](https://console.groq.com), create a project and copy the API key which will be used, and replace the placeholder `YOUR_GROQ_API_KEY_HERE` with the actual API key in the Stage 6 augmentation cell before running.
+
+---
+
+## Running the Code
+
+The notebook is designed to be run sequentially from Stage 0 to Stage 9 via `Runtime > Run all` in Google Colab, or cell by cell for debugging in case some errors are encountered during the experiments' runs.
+
+**First run (Run 1 - no augmentation):**
+- In Stage 6, for Run 1, ensure the `.copy()` lines are uncommented, and the `nllb_back_translate` lines are commented out.
+- Run all cells. Results are saved automatically to `results_summary.csv`.
+
+**Second run (Run 2 - augmentation):**
+- In Stage 6, for run 2, uncomment the `nllb_back_translate` and Groq paraphrasing lines, and comment out the `.copy()` lines.
+- The notebook is fully checkpoint-aware - if the session disconnects, rerun from the top, and it will resume from the last saved checkpoint automatically. This was implemented due to countless failures that were faced during the first stages of the experiments, where the whole experiment would need to be run from the beginning after the runtime failed or the space ran out in Google Drive.
+
+**Outputs** are saved to Google Drive under `COS760_checkpoints/` and to `/content/` in the Colab session.
+
+---
+
+## Data Information
+
+All datasets used in this project are publicly available and downloaded automatically within the notebook; no external download of the datasets is needed unless required for future use or for different experiments:
+
+| Dataset | Source | How Accessed |
+|---------|--------|-------------|
+| Sesotho News Headlines | Mokhosi et al. (2024) | Downloaded via Zenodo DOI: 10.1016/j.dib.2024.110371 |
+| PuoData (Setswana) | Marivate et al. (2020) | `datasets` library: `dsfsi/puo-data` |
+| MTEB Tswana News | MTEB (2022) | `datasets` library: `mteb/tswana_news` |
+| Setswana Closed | dsfsi | `datasets` library: `dsfsi/setswana-sentiment` |
+| Hausa (AfriSenti) | Muhammad et al. (2023) | Cloned from GitHub: `afrisenti-semeval/afrisent-semeval-2023` |
+| Swahili (AfriSenti) | Muhammad et al. (2023) | Cloned from GitHub: `afrisenti-semeval/afrisent-semeval-2023` |
+
+No datasets need to be downloaded manually or included in the zip file. The augmented training datasets produced by Stage 6 are included in the `data/` folder of this repository for reproducibility.
 
 ---
 
